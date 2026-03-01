@@ -1,0 +1,78 @@
+# =========================
+# Node
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# =========================
+# Expo (agar use kar rahe ho)
+# =========================
+.expo/
+.expo-shared/
+
+# =========================
+# React Native
+# =========================
+# Metro
+.metro-health-check*
+
+# Logs
+logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# =========================
+# macOS
+# =========================
+.DS_Store
+
+# =========================
+# Android
+# =========================
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+android/app/debug.keystore
+*.keystore
+*.jks
+
+# =========================
+# iOS
+# =========================
+ios/build/
+ios/Pods/
+ios/DerivedData/
+*.xcworkspace
+!ios/*.xcworkspace/contents.xcworkspacedata
+*.xcuserdata
+*.xcuserstate
+
+# =========================
+# IDEs
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Coverage
+# =========================
+coverage/
+
+# =========================
+# Misc
+# =========================
+.tmp/
+.cache/
+dist/
+build/

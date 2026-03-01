@@ -1,0 +1,8 @@
+export const SPLASH_SCREEN = "SplashScreen"
+export const AUTH_STACK = "AuthStack"
+export const MAIN_STACK = "MainStack"
+export const SIGNIN_SCREEN = "SignInScreen"
+export const SIGNUP_SCREEN = "SignUpScreen"
+export const ACTIVE_WORKOUT_SCREEN = "ActiveWorkoutScreen"
+export const WORKOUT_HISTORY_SCREEN = "WorkoutHistoryScreen"
+export const PROFILE_SCREEN = "ProfileScreen"
