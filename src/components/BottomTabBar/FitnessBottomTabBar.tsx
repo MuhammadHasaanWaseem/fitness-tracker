@@ -7,10 +7,11 @@ import {
 } from "react-native"
 import Text from "../Text"
 import { SvgIcon } from "../../utils"
-import { iconWorkout, iconHistory, iconAdd, iconProfile } from "../../utils/svgIcons"
+import { iconWorkout, iconHistory, iconAdd, iconAnalytics, iconProfile } from "../../utils/svgIcons"
 import {
   ACTIVE_WORKOUT_SCREEN,
   WORKOUT_HISTORY_SCREEN,
+  ANALYTICS_SCREEN,
   PROFILE_SCREEN,
 } from "../../constants"
 import { colors, fonts, ResponsiveFonts } from "../../themes"
@@ -31,9 +32,11 @@ export default function FitnessBottomTabBar({
             ? "Workout"
             : route.name === WORKOUT_HISTORY_SCREEN
               ? "History"
-              : route.name === PROFILE_SCREEN
-                ? "Profile"
-                : ""
+              : route.name === ANALYTICS_SCREEN
+                ? "Analytics"
+                : route.name === PROFILE_SCREEN
+                  ? "Profile"
+                  : ""
         const onPress = () => {
           if (isAdd) {
             navigation.navigate(ACTIVE_WORKOUT_SCREEN, { openAddModal: true })
@@ -53,9 +56,11 @@ export default function FitnessBottomTabBar({
             ? iconWorkout
             : route.name === WORKOUT_HISTORY_SCREEN
               ? iconHistory
-              : route.name === PROFILE_SCREEN
-                ? iconProfile
-                : iconAdd
+              : route.name === ANALYTICS_SCREEN
+                ? iconAnalytics
+                : route.name === PROFILE_SCREEN
+                  ? iconProfile
+                  : iconAdd
         if (isAdd) {
           return (
             <TouchableOpacity

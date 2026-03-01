@@ -84,7 +84,21 @@ create policy "Users can manage exercises of own workouts"
     )
   );
 
--- Allow authenticated users to read their own profile (optional, for auth.users)
--- grant usage on schema public to anon, authenticated;
--- grant all on public.workouts to authenticated;
--- grant all on public.exercises to authenticated;
+-- User analytics: login, logout, workout_completed (work history + counts)
+create table if not exists public.user_analytics (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  event_type text not null check (event_type in ('login', 'logout', 'workout_completed')),
+  created_at timestamptz not null default now(),
+  metadata jsonb default '{}'
+);
+
+create index if not exists idx_user_analytics_user_event on public.user_analytics (user_id, event_type);
+create index if not exists idx_user_analytics_created on public.user_analytics (user_id, created_at desc);
+
+alter table public.user_analytics enable row level security;
+drop policy if exists "Users can manage own analytics" on public.user_analytics;
+create policy "Users can manage own analytics"
+  on public.user_analytics for all
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);

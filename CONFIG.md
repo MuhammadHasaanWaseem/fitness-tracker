@@ -5,7 +5,7 @@
 1. Open [Supabase Dashboard](https://supabase.com/dashboard) → your project **Fitness Tracker**.
 2. Go to **SQL Editor** → **New query**.
 3. Copy the contents of **`supabase_schema.sql`** and paste into the editor, then click **Run**.
-4. You should see “Success. No rows returned.” Tables `users`, `workouts`, and `exercises` and their RLS policies are created. A trigger creates a `users` row when someone signs up (with name from the form).
+4. You should see “Success. No rows returned.” Tables `users`, `workouts`, `exercises`, and `user_analytics` (for Analytics tab) and their RLS policies are created. A trigger creates a `users` row when someone signs up (with name from the form).
 
 ## 2. Auth: optional – no email confirmation (for development)
 

@@ -20,6 +20,7 @@ import { supabase } from "../config/supabase"
 import { selectAuth } from "../redux/slices/authSlice"
 import { workoutApi, workoutHistoryTag } from "../redux/api/workoutApi"
 import { trackWorkoutStarted } from "../utils/analytics"
+import { recordUserAnalytics } from "../utils/userAnalytics"
 import { colors, fonts, ResponsiveFonts } from "../themes"
 import type { ExerciseRow } from "../types/workout"
 
@@ -105,6 +106,7 @@ export default function ActiveWorkoutScreen() {
       Toast.show({ type: "error", text1: error.message })
       return
     }
+    if (user?.id) await recordUserAnalytics(user.id, "workout_completed", { exercise_count: exercises.length })
     dispatch(workoutApi.util.invalidateTags([workoutHistoryTag]))
     setActive(false)
     setWorkoutId(null)

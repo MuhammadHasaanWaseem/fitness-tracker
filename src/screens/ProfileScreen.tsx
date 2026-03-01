@@ -6,6 +6,7 @@ import Text from "../components/Text"
 import Button from "../components/Buttons/Buttons"
 import VerticalSpace from "../components/VerticalSpace"
 import { supabase } from "../config/supabase"
+import { recordUserAnalytics } from "../utils/userAnalytics"
 import { selectAuth } from "../redux/slices/authSlice"
 import { signOut } from "../redux/slices/authSlice"
 import { colors, fonts, ResponsiveFonts } from "../themes"
@@ -26,6 +27,7 @@ export default function ProfileScreen() {
   }, [user?.id])
 
   const handleLogout = async () => {
+    if (user?.id) await recordUserAnalytics(user.id, "logout")
     await supabase.auth.signOut()
     dispatch(signOut())
     Toast.show({ type: "success", text1: "Logged out" })

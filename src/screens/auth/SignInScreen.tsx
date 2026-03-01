@@ -14,6 +14,7 @@ import { setUser } from "../../redux/slices/authSlice"
 import { MAIN_STACK, SIGNUP_SCREEN } from "../../constants"
 import { LoginValidation } from "../../constants/Validations"
 import { getAuthErrorMessage } from "../../utils/authErrors"
+import { recordUserAnalytics } from "../../utils/userAnalytics"
 import { colors, fonts, ResponsiveFonts } from "../../themes"
 
 export default function SignInScreen() {
@@ -39,6 +40,7 @@ export default function SignInScreen() {
         },
         { onConflict: "id" }
       )
+      await recordUserAnalytics(data.user.id, "login")
       Toast.show({ type: "success", text1: "Signed in successfully" })
       nav.reset({ index: 0, routes: [{ name: MAIN_STACK as never }] })
     }

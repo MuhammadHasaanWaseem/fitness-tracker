@@ -3,10 +3,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import {
   ACTIVE_WORKOUT_SCREEN,
   WORKOUT_HISTORY_SCREEN,
+  ANALYTICS_SCREEN,
   PROFILE_SCREEN,
 } from "../constants"
 import ActiveWorkoutScreen from "../screens/ActiveWorkoutScreen"
 import WorkoutHistoryScreen from "../screens/WorkoutHistoryScreen"
+import AnalyticsScreen from "../screens/AnalyticsScreen"
 import ProfileScreen from "../screens/ProfileScreen"
 import EmptyScreen from "../screens/EmptyScreen"
 import FitnessBottomTabBar from "../components/BottomTabBar/FitnessBottomTabBar"
@@ -31,6 +33,7 @@ export default function MainStack() {
         })}
       />
       <Tab.Screen name={WORKOUT_HISTORY_SCREEN} component={WorkoutHistoryScreen} />
+      <Tab.Screen name={ANALYTICS_SCREEN} component={AnalyticsScreen} />
       <Tab.Screen name={PROFILE_SCREEN} component={ProfileScreen} />
     </Tab.Navigator>
   )
